@@ -10,7 +10,7 @@
 
 # Installation
 
-* Install Acte.PasswordPolicy from market place.
+* Install Acte.PasswordPolicy plugin in plugins/acte/passwordpolicy.
 * Go to PasswordPolicy settings to configure policies.
 
 # To do
