@@ -1,0 +1,6 @@
+plugin:
+    name: 'acte.passwordpolicy::lang.plugin.name'
+    description: 'acte.passwordpolicy::lang.plugin.description'
+    author: 'Acte Solutions'
+    icon: oc-icon-lock
+    homepage: 'https://www.acte-solutions.com'
