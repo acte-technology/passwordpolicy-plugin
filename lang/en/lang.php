@@ -12,6 +12,9 @@
       'upper_case' => 'Upper case',
       'special_character' => 'Special character',
       'numbers' => 'Numbers',
+      'pwned' => 'Pwned check',
+      'pwned_comment' => 'Check your hashed password in haveibeenpwned.com database',
+
       'tabs' => [
         'backend' => "Backend users",
         'user' => "Front-end users",

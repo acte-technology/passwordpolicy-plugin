@@ -12,6 +12,9 @@
       'upper_case' => 'Capitales',
       'special_character' => 'Charactères spéciaux',
       'numbers' => 'Chiffres',
+      'pwned' => 'Pwned vérification',
+      'pwned_comment' => 'Vérification du mot de passe sha1 dans haveibeenpwned.com',
+      
       'tabs' => [
         'backend' => "Administrateurs",
         'user' => "Utilisateurs",
