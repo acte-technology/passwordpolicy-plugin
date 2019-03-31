@@ -4,3 +4,7 @@ plugin:
     author: 'Acte Solutions'
     icon: oc-icon-lock
     homepage: 'https://www.acte-solutions.com'
+permissions:
+    acte.passwordpolicy.manage_policies:
+        tab: 'acte.passwordpolicy::lang.plugin.name'
+        label: 'acte.passwordpolicy::lang.plugin.name'
