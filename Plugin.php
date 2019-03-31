@@ -5,6 +5,7 @@ use Backend\Models\User as BackendUserModel;
 use Validator;
 use Lang;
 
+use Acte\PasswordPolicy\Classes\Pwned;
 use Acte\PasswordPolicy\Models\Settings as PasswordPolicySettings;
 use Log;
 
@@ -56,6 +57,14 @@ class Plugin extends PluginBase
           return TRUE;
         }, Lang::get('acte.passwordpolicy::validation.min_special_char') );
 
+        //Pwned validator using Pwned API
+        Validator::extend('pwned', function($attribute, $value, $parameters){
+          $pwned = new Pwned;
+          if( $pwned->isPwned($value) === true ) return FALSE;
+          return TRUE;
+        }, Lang::get('acte.passwordpolicy::validation.is_pwned') );
+
+
 
       /* BACKEND USERS */
       //Backend user password policy if activated
@@ -73,8 +82,13 @@ class Plugin extends PluginBase
 
               $model->rules['email'] = 'required|between:6,255|email|unique:backend_users';
               $model->rules['login'] = 'required|between:3,255|unique:backend_users';
-              $model->rules['password'] = "required:create|between:4,255|min_upper_case:$upperCase|min_lower_case:$lowerCase|min:$length|min_number:$numbers|min_special_char:$specialChar|confirmed";
-              $model->rules['password_confirmation'] = "required_with:password|between:4,255|min_upper_case:$upperCase|min_lower_case:$lowerCase|min:$length|min_number:$numbers|min_special_char:$specialChar";
+              $model->rules['password_confirmation'] = "required_with:password";
+
+              if(PasswordPolicySettings::get('backend.pwned', null)){
+                $model->rules['password'] = "required:create|between:4,255|min_upper_case:$upperCase|min_lower_case:$lowerCase|min:$length|min_number:$numbers|min_special_char:$specialChar|pwned|confirmed";
+              } else {
+                $model->rules['password'] = "required:create|between:4,255|min_upper_case:$upperCase|min_lower_case:$lowerCase|min:$length|min_number:$numbers|min_special_char:$specialChar|confirmed";
+              }
 
             });
         });
@@ -98,8 +112,13 @@ class Plugin extends PluginBase
               $model->rules['email']    = 'required|between:6,255|email|unique:users';
               $model->rules['avatar']   = 'nullable|image|max:4000';
               $model->rules['username'] = 'required|between:2,255|unique:users';
-              $model->rules['password'] = "required:create|between:4,255|min_upper_case:$upperCase|min_lower_case:$lowerCase|min:$length|min_number:$numbers|min_special_char:$specialChar|confirmed";
-              $model->rules['password_confirmation'] = "required_with:password|between:4,255|min_upper_case:$upperCase|min_lower_case:$lowerCase|min:$length|min_number:$numbers|min_special_char:$specialChar";
+              $model->rules['password_confirmation'] = "required_with:password|between:4,255";
+
+              if(PasswordPolicySettings::get('user.pwned', null)){
+                $model->rules['password'] = "required:create|between:4,255|min_upper_case:$upperCase|min_lower_case:$lowerCase|min:$length|min_number:$numbers|min_special_char:$specialChar|pwned|confirmed";
+              } else {
+                $model->rules['password'] = "required:create|between:4,255|min_upper_case:$upperCase|min_lower_case:$lowerCase|min:$length|min_number:$numbers|min_special_char:$specialChar|confirmed";
+              }
 
             });
         });

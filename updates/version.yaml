@@ -2,3 +2,5 @@
     - 'Initialize plugin.'
 1.0.2:
     - 'Permission not visible bug fix. Register permission in plugin.yaml'
+1.0.3:
+    - 'Added feature check password with haveibeenpwned.com database'

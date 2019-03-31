@@ -5,9 +5,20 @@ tabs:
   fields:
     backend[isActive]:
       label: 'acte.passwordpolicy::lang.settings.activate_backend_policy'
-      span: left
+      span: full
       type: switch
       default: false
+      tab: 'acte.passwordpolicy::lang.settings.tabs.backend'
+
+    backend[pwned]:
+      label: 'acte.passwordpolicy::lang.settings.pwned_comment'
+      span: full
+      default: 0
+      trigger:
+        action: show
+        field: 'backend[isActive]'
+        condition: checked
+      type: switch
       tab: 'acte.passwordpolicy::lang.settings.tabs.backend'
     section_backend:
       type: section
@@ -27,6 +38,8 @@ tabs:
         field: 'backend[isActive]'
         condition: checked
       tab: 'acte.passwordpolicy::lang.settings.tabs.backend'
+
+
     backend[numbers]:
       label: 'acte.passwordpolicy::lang.settings.numbers'
       span: left
@@ -37,16 +50,18 @@ tabs:
         field: 'backend[isActive]'
         condition: checked
       tab: 'acte.passwordpolicy::lang.settings.tabs.backend'
-    backend[upperCase]:
-      label: 'acte.passwordpolicy::lang.settings.upper_case'
-      span: left
-      type: number
-      default: 2
+    backend[specialChar]:
+      label: 'acte.passwordpolicy::lang.settings.special_character'
+      span: right
+      default: 0
       trigger:
         action: show
         field: 'backend[isActive]'
         condition: checked
+      type: number
       tab: 'acte.passwordpolicy::lang.settings.tabs.backend'
+
+
     backend[lowerCase]:
       label: 'acte.passwordpolicy::lang.settings.lower_case'
       span: left
@@ -57,16 +72,20 @@ tabs:
         field: 'backend[isActive]'
         condition: checked
       tab: 'acte.passwordpolicy::lang.settings.tabs.backend'
-    backend[specialChar]:
-      label: 'acte.passwordpolicy::lang.settings.special_character'
-      span: left
-      default: 0
+    backend[upperCase]:
+      label: 'acte.passwordpolicy::lang.settings.upper_case'
+      span: right
+      type: number
+      default: 2
       trigger:
         action: show
         field: 'backend[isActive]'
         condition: checked
-      type: number
       tab: 'acte.passwordpolicy::lang.settings.tabs.backend'
+
+
+
+
 
     user[isActive]:
       label: 'acte.passwordpolicy::lang.settings.activate_user_policy'
@@ -74,6 +93,20 @@ tabs:
       default: false
       type: switch
       tab: 'acte.passwordpolicy::lang.settings.tabs.user'
+
+
+
+    user[pwned]:
+      label: 'acte.passwordpolicy::lang.settings.pwned_comment'
+      span: full
+      default: 0
+      trigger:
+        action: show
+        field: 'user[isActive]'
+        condition: checked
+      type: switch
+      tab: 'acte.passwordpolicy::lang.settings.tabs.user'
+
     section_user:
       type: section
       comment: 'acte.passwordpolicy::lang.settings.description'
@@ -84,7 +117,7 @@ tabs:
       tab: 'acte.passwordpolicy::lang.settings.tabs.user'
     user[length]:
       label: 'acte.passwordpolicy::lang.settings.length'
-      span: left
+      span: full
       type: number
       default: 8
       trigger:
@@ -92,6 +125,7 @@ tabs:
         field: 'user[isActive]'
         condition: checked
       tab: 'acte.passwordpolicy::lang.settings.tabs.user'
+
     user[numbers]:
       label: 'acte.passwordpolicy::lang.settings.numbers'
       span: left
@@ -102,16 +136,18 @@ tabs:
         field: 'user[isActive]'
         condition: checked
       tab: 'acte.passwordpolicy::lang.settings.tabs.user'
-    user[upperCase]:
-      label: 'acte.passwordpolicy::lang.settings.upper_case'
-      span: left
-      type: number
-      default: 2
+    user[specialChar]:
+      label: 'acte.passwordpolicy::lang.settings.special_character'
+      span: right
+      default: 0
       trigger:
         action: show
         field: 'user[isActive]'
         condition: checked
+      type: number
       tab: 'acte.passwordpolicy::lang.settings.tabs.user'
+
+
     user[lowerCase]:
       label: 'acte.passwordpolicy::lang.settings.lower_case'
       span: left
@@ -122,13 +158,13 @@ tabs:
         field: 'user[isActive]'
         condition: checked
       tab: 'acte.passwordpolicy::lang.settings.tabs.user'
-    user[specialChar]:
-      label: 'acte.passwordpolicy::lang.settings.special_character'
-      span: left
-      default: 0
+    user[upperCase]:
+      label: 'acte.passwordpolicy::lang.settings.upper_case'
+      span: right
+      type: number
+      default: 2
       trigger:
         action: show
         field: 'user[isActive]'
         condition: checked
-      type: number
       tab: 'acte.passwordpolicy::lang.settings.tabs.user'
