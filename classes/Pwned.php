@@ -10,7 +10,6 @@ class Pwned {
   function isPwned($password){
 
     $sha1Pass = strtoupper( sha1($password) );
-    Log::debug($sha1Pass);
     return $this->searchByRange($sha1Pass);
 
   }
