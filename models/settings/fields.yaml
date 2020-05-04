@@ -20,6 +20,17 @@ tabs:
         condition: checked
       type: switch
       tab: 'acte.passwordpolicy::lang.settings.tabs.backend'
+    backend[pwned_found]:
+      label: 'acte.passwordpolicy::lang.settings.pwned_found'
+      span: auto
+      default: 1
+      trigger:
+        action: show
+        field: 'backend[pwned]'
+        condition: checked
+      type: number
+      tab: 'acte.passwordpolicy::lang.settings.tabs.backend'
+
     section_backend:
       type: section
       comment: 'acte.passwordpolicy::lang.settings.description'
@@ -106,6 +117,16 @@ tabs:
         condition: checked
       type: switch
       tab: 'acte.passwordpolicy::lang.settings.tabs.user'
+    user[pwned_found]:
+      label: 'acte.passwordpolicy::lang.settings.pwned_found'
+      span: auto
+      default: 3
+      trigger:
+        action: show
+        field: 'user[pwned]'
+        condition: checked
+      type: number
+      tab: 'acte.passwordpolicy::lang.settings.tabs.user'
 
     section_user:
       type: section
@@ -117,7 +138,7 @@ tabs:
       tab: 'acte.passwordpolicy::lang.settings.tabs.user'
     user[length]:
       label: 'acte.passwordpolicy::lang.settings.length'
-      span: full
+      span: auto
       type: number
       default: 8
       trigger:

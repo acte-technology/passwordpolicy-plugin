@@ -14,6 +14,7 @@
       'numbers' => 'Chiffres',
       'pwned' => 'Pwned vérification',
       'pwned_comment' => 'Vérification du mot de passe sha1 dans haveibeenpwned.com',
+      'pwned_found' => 'Niveau de déclenchement sur le nombre de fois apparu',
       
       'tabs' => [
         'backend' => "Administrateurs",

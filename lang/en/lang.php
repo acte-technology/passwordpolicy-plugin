@@ -14,6 +14,7 @@
       'numbers' => 'Numbers',
       'pwned' => 'Pwned check',
       'pwned_comment' => 'Check your hashed password in haveibeenpwned.com database',
+      'pwned_found' => 'Threshold of found in haveibeenpwned.com database',
 
       'tabs' => [
         'backend' => "Backend users",

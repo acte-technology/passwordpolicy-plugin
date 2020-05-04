@@ -1,7 +1,9 @@
 <?php namespace Acte\PasswordPolicy\Classes;
 
 use Log;
-
+use BackendAuth;
+use Acte\PasswordPolicy\Models\Settings;
+use Flash;
 // https://haveibeenpwned.com/API/v2#PwnedPasswords
 
 class Pwned {
@@ -32,7 +34,17 @@ class Pwned {
         $found = $result[1];
 
         if($hashedPass == $range.$hash){
-          return true; // This is a Pwned password !
+          // This is a Pwned password !
+
+          if(BackendAuth::check()){ $foundThreshold = Settings::get('backend.pwned_found'); }
+          else { $foundThreshold = Settings::get('user.pwned_found'); }
+
+          if($foundThreshold <= $found){
+            return true;
+          } else {
+            if(BackendAuth::check()){ Log::warning('Weak password for backend user '.BackendAuth::getUser()->id); }
+            return false;
+          }
         }
 
       }

@@ -4,3 +4,5 @@
     - 'Permission not visible bug fix. Register permission in plugin.yaml'
 1.0.3:
     - 'Added feature check password with haveibeenpwned.com database'
+1.0.4:
+    - 'Added found threshold for haveibeenpwned.com database'
